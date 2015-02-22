@@ -4,7 +4,6 @@ __author__ = 'Arcarius Engenharia'
 # Isso é um exemplo de implementação bem simplificada de requisição por cartão de crédito.(testado em Fev/2015)
 # E diferente da última revisão que estava no GITHUB da mundipagg, essa versão foi minimamente testada antes de se publicar...
 # Se precisarem de uma consultoria no assunto, entrem em contato conosco.(Arcarius Engenharia)
-# O suporte da mundipagg não costuma ajudar muito quando o assunto envolve python...
 
 from mundipagg.ccred_helper import NewOrder
 from mundipagg.Gateway import CreateOrderResponse, CreditCardTransactionReponse
