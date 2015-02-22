@@ -6,7 +6,7 @@ sudo easy_install https://pypi.python.org/packages/2.6/s/suds/suds-0.4-py2.6.egg
 
 # Depois instale esse projeto no seu servidor: mundipagg-python-api
 git clone https://github.com/gil555/mundipagg-python-api.git    # se você está lendo isso, provavelmente já fez esse passo...
-sudo python setup.py install 
+sudo python setup.py install                                    # Isso é opcional... pode simplesmente copiar tudo para o dir do seu projeto
 
 # Agora abra o arquivo exemplo_de_uso.py e modifique-o como precisar.
 # O mais importante é preencher a variável merchandKey com o valor que o mundipagg te fornecer.

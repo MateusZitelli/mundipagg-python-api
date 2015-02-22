@@ -51,7 +51,7 @@ class CreateOrderResponse():
     BoletoTransactionResultCollection = []
     MundiPaggSuggestion = None
     ErrorReport = None
-
+    FirstCreditCardResult = None
 
 class Gateway:
     """Class responsable for comunicating with the service via SOAP"""
@@ -303,6 +303,6 @@ class Gateway:
         try:
             result.FirstCreditCardResult = result.CreditCardTransactionResultCollection[0][0]
         except:
-            pass
+            result.FirstCreditCardResult = None
         return result
 

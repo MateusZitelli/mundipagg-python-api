@@ -34,6 +34,9 @@ class CreateOrderRequest:
 	#: Not used
 	emailUpdateToBuyerEnum = 'No'
 
+	#: Not used
+	FirstCreditCardResult = None
+
 	class DinheiroIsoEnum:
 		"""Currency Iso Enum"""
 		BrazillianReal = 'BRL'

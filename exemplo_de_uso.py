@@ -32,12 +32,12 @@ xf.write(str(neword.nog.last_received))
 
 print "Functionou? %s" % newordres.Success
 if newordres.ErrorReport is not None:
-    print newordres.ErrorReport.ErrorItemCollection[0][0].Description
-print "InstantBuyerKey=%s" % newordres.FirstCreditCardResult.InstantBuyKey
+    print " ...%s" % newordres.ErrorReport.ErrorItemCollection[0][0].Description
 print "OrderKey=%s" % newordres.OrderKey
 print "OrderReference=%s" % newordres.OrderReference
 print "OrderStatusEnum=%s" % newordres.OrderStatusEnum
 print "RequestKey=%s" % newordres.RequestKey
-print "CreditCard Trahsactuion Status: %s" % newordres.FirstCreditCardResult.CreditCardTransactionStatusEnum
-
+if newordres.FirstCreditCardResult is not None:
+    print "InstantBuyerKey=%s" % newordres.FirstCreditCardResult.InstantBuyKey
+    print "CreditCard Trahsactuion Status: %s" % newordres.FirstCreditCardResult.CreditCardTransactionStatusEnum
 print "MundiPaggSuggestion=%s" % newordres.MundiPaggSuggestion
