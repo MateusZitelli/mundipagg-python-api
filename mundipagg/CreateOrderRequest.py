@@ -17,7 +17,7 @@ class CreateOrderRequest:
 	merchantKey = None
 
 	#: If merchant not send OrderReference, Mundipagg will generate and return in the response.
-    #: @return [String] Custom order identification.
+	#: @return [String] Custom order identification.
 	orderReference = None
 
 	#: list with all credit card transaction [List]
@@ -27,19 +27,20 @@ class CreateOrderRequest:
 	boletoTransactionCollection = []
 
 	#: If not send, it will be generate automatically in the webservice and returned in response.
-    #: Web service request identification, it is used for investigate problems with webservice requests.
-    #: @return [Guid] Globally Unique Identifier. 		
+	#: Web service request identification, it is used for investigate problems with webservice requests.
+	#: @return [Guid] Globally Unique Identifier. 		
 	requestKey = None
 
 	#: Not used
 	emailUpdateToBuyerEnum = 'No'
 
-	class CurrencyIsoEnum:
+	class DinheiroIsoEnum:
 		"""Currency Iso Enum"""
 		BrazillianReal = 'BRL'
 		AmericanDollar = 'USD'
 
 	def __init__(self):
-		self.requestKey = '00000000-0000-0000-0000-000000000000'
-		self.currencyIsoEnum = self.CurrencyIsoEnum.BrazillianReal
+		self.currencyIsoEnum = self.DinheiroIsoEnum.BrazillianReal
+		self.target_env = 'dev'
+		self.merchantKey = '00000000-0000-0000-0000-000000000000'
 		

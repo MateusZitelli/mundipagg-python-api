@@ -1,3 +1,6 @@
+# -*- coding: UTF-8 -*-
+__author__ = 'Arcarius Engenharia'
+
 class CreditCardTransaction:
 	"""Class that hold Credit Card Transaction information"""
 
@@ -44,10 +47,13 @@ class CreditCardTransaction:
 	#: Operation enum
 	operationEnum = None
 
+	#: Correção... estava faltando esse campo (Guid)
+	InstantBuyKey = None
+
 	class BrandEnum:
 		"""Credit card brand enum"""
 		Visa = 'Visa'
-		MasterCard = 'MasterCard'
+		MasterCard = 'Mastercard'
 		AmericanExpress = 'Amex'
 		Hipercard = 'Hipercard'
 		Diners = 'Diners'
