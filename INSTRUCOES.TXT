@@ -1,0 +1,14 @@
+# Essa é a versão da API python para o MundiPagg, corrigida pela Arcarius Engenharia.
+
+# Primeiro: Instale o SUDS para o python. (se os comando abaixo não derem certo, lembre-se que o google é seu amigo)
+sudo apt-get install python-setuptools
+sudo easy_install https://pypi.python.org/packages/2.6/s/suds/suds-0.4-py2.6.egg#md5=94a9414e90e01243262548ad9eaf2784
+
+# Depois instale esse projeto no seu servidor: mundipagg-python-api
+git clone https://github.com/gil555/mundipagg-python-api.git    # se você está lendo isso, provavelmente já fez esse passo...
+sudo python setup.py install 
+
+# Agora abra o arquivo exemplo_de_uso.py e modifique-o como precisar.
+# O mais importante é preencher a variável merchandKey com o valor que o mundipagg te fornecer.
+
+# Se quiser contratar uma consultoria sobre esse projeto, nos procure: Arcarius Engenharia.
