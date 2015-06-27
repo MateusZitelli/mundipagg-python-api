@@ -46,14 +46,10 @@ class CreditCardTransaction:
     #: Brand enum
     brandEnum = None
 
-    #: Operation enum
-    operationEnum = None
-
     #: Correção... estava faltando esse campo (Guid)
     InstantBuyKey = None
 
     class BrandEnum:
-
         """Credit card brand enum"""
         Visa = 'Visa'
         MasterCard = 'Mastercard'
@@ -65,7 +61,6 @@ class CreditCardTransaction:
         Discover = 'Discover'
 
     class OperationEnum:
-
         """Operation type enum"""
         AuthOnly = 'AuthOnly'
         AuthAndCapture = 'AuthAndCapture'
