@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 __author__ = 'Arcarius Engenharia'
 
-from cStringIO import StringIO
 from mundipagg.CreateOrderRequest import CreateOrderRequest
 from mundipagg.CreditCardTransaction import CreditCardTransaction
 from suds.client import Client
@@ -10,7 +9,8 @@ import logging
 
 
 class CreditCardTransactionReponse():
-    """Essa classe está aqui apenas para documentar os objetos que compõem a coleção 
+
+    """Essa classe está aqui apenas para documentar os objetos que compõem a coleção
        CreditCardTransactionResultCollection na resposta arcCreateOrderResponse do mundipagg
     """
     AcquirerMessage = ""
@@ -37,6 +37,7 @@ class CreditCardTransactionReponse():
 
 
 class CreateOrderResponse():
+
     """Essa classe está aqui apenas para documentar o objeto de resposta do método CreateCreditCardTransactionCollection"""
     BuyerKey = "00000000-0000-0000-0000-000000000000"
     MerchantKey = "00000000-0000-0000-0000-000000000000"
@@ -53,11 +54,10 @@ class CreateOrderResponse():
     ErrorReport = None
     FirstCreditCardResult = None
 
-class Gateway:
-    """Class responsable for comunicating with the service via SOAP"""
 
-    last_sent = ""
-    last_received = ""
+class Gateway:
+
+    """Class responsable for comunicating with the service via SOAP"""
 
     def __init__(self, environment="test"):
         """This method creates an CreateBuyer object
@@ -122,7 +122,8 @@ class Gateway:
         url = self.getUrl()
         client = Client(url)
         transactionCollection = []
-        boletoTransactionRequest = client.factory.create('ns0:BoletoTransaction')
+        boletoTransactionRequest = client.factory.create(
+            'ns0:BoletoTransaction')
         for boleto in request.boletoTransactionCollection:
             boletoTransactionRequest.AmountInCents = boleto.amountInCents
             boletoTransactionRequest.BankNumber = boleto.bankNumber
@@ -142,11 +143,14 @@ class Gateway:
         url = self.getUrl()
         client = Client(url)
         transactionCollection = []
-        arrayOfCreditCardTransaction = client.factory.create('ns0:ArrayOfCreditCardTransaction')
+        arrayOfCreditCardTransaction = client.factory.create(
+            'ns0:ArrayOfCreditCardTransaction')
 
-        if request.creditCardTransactionCollection is not None and len(request.creditCardTransactionCollection) > 0:
+        if request.creditCardTransactionCollection is not None and len(
+                request.creditCardTransactionCollection) > 0:
             for transaction in request.creditCardTransactionCollection:
-                creditCardTransaction = client.factory.create('ns0:CreditCardTransaction')
+                creditCardTransaction = client.factory.create(
+                    'ns0:CreditCardTransaction')
                 creditCardTransaction.AmountInCents = transaction.amountInCents
                 creditCardTransaction.CreditCardBrandEnum = transaction.creditCardBrandEnum
                 creditCardTransaction.CreditCardNumber = transaction.creditCardNumber
@@ -158,7 +162,8 @@ class Gateway:
                 creditCardTransaction.PaymentMethodCode = transaction.paymentMethodCode
                 creditCardTransaction.SecurityCode = transaction.securityCode
                 creditCardTransaction.TransactionReference = transaction.transactionReference
-                if transaction.InstantBuyKey is not None and len(transaction.InstantBuyKey) > 1:
+                if transaction.InstantBuyKey is not None and len(
+                        transaction.InstantBuyKey) > 1:
                     creditCardTransaction.InstantBuyKey = transaction.InstantBuyKey
                 if transaction.recurrency is not None:
                     creditCardTransaction.Recurrency.DateToStartBilling = transaction.recurrency.dateToStartBilling
@@ -172,7 +177,6 @@ class Gateway:
         arrayOfCreditCardTransaction.CreditCardTransaction = transactionCollection
         return arrayOfCreditCardTransaction
 
-
     def CreateCreditCardTransaction(self, request):
         """Para criar um objeto CreateCreditCardTransaction
         Não deve ser usado senão excepcionalmente por quem realmente saiba o que está fazendo...
@@ -184,7 +188,8 @@ class Gateway:
         url = self.getUrl()
         client = Client(url)
         transactionCollection = []
-        creditCardTransaction = client.factory.create('ns0:CreditCardTransaction')
+        creditCardTransaction = client.factory.create(
+            'ns0:CreditCardTransaction')
         for transaction in request.creditCardTransactionCollection:
             creditCardTransaction.AmountInCents = transaction.amountInCents
             creditCardTransaction.CreditCardBrandEnum = transaction.creditCardBrandEnum
@@ -209,7 +214,6 @@ class Gateway:
 
         return transactionCollection
 
-
     def ManageOrder(self, request):
         """Calls the ManageOrder method
         :param request: An CreateOrderRequest
@@ -228,9 +232,9 @@ class Gateway:
 
             for transaction in request.transactionCollection:
                 ManageCreditCardTransactionRequest.append({
-                'AmountInCents': transaction.amountInCents,
-                'TransactionKey': transaction.transactionKey,
-                'TransactionReference': transaction.transactionReference
+                    'AmountInCents': transaction.amountInCents,
+                    'TransactionKey': transaction.transactionKey,
+                    'TransactionReference': transaction.transactionReference
                 })
 
         manageOrderRequest.MerchantKey = request.merchantKey
@@ -281,28 +285,29 @@ class Gateway:
         else:
             createOrderRequest.Buyer = self.CreateBuyer(request)
 
-        if request.creditCardTransactionCollection is not None and len(request.creditCardTransactionCollection) > 0:
-            creditCardTransactionCollection = self.CreateCreditCardTransactionCollection(request)
+        if request.creditCardTransactionCollection is not None and len(
+                request.creditCardTransactionCollection) > 0:
+            creditCardTransactionCollection = self.CreateCreditCardTransactionCollection(
+                request)
             createOrderRequest.CreditCardTransactionCollection = creditCardTransactionCollection
         else:
             createOrderRequest.CreditCardTransactionCollection = None
 
-        if request.boletoTransactionCollection is not None and len(request.boletoTransactionCollection) > 0:
+        if request.boletoTransactionCollection is not None and len(
+                request.boletoTransactionCollection) > 0:
             boletoTransactionCollection = self.CreateBoletoTransaction(request)
             createOrderRequest.BoletoTransactionCollection = boletoTransactionCollection
         else:
             createOrderRequest.BoletoTransactionCollection = None
 
-        print createOrderRequest
+        print(createOrderRequest)
         result = client.service.CreateOrder(createOrderRequest)
-        self.last_sent = client.last_sent()
-        self.last_received = client.last_received()
 
         # As linhas abaixo servem apenas para simplificar o objeto de resposta para o caso de um único cartão de crédito
         # por transação (a imensa maioria dos casos portanto)
         try:
-            result.FirstCreditCardResult = result.CreditCardTransactionResultCollection[0][0]
+            result.FirstCreditCardResult = result.CreditCardTransactionResultCollection[
+                0][0]
         except:
             result.FirstCreditCardResult = None
         return result
-

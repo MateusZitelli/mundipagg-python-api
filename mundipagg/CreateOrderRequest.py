@@ -1,49 +1,50 @@
 class CreateOrderRequest:
-	"""Class that hold an CreateOrderRequest information"""
 
-	#: Order amount in cents [long]
-	amountInCents = None
+    """Class that hold an CreateOrderRequest information"""
 
-	#: Amount (in cents) to consider the order paid
-	amountInCentsToConsiderPaid = None
+    #: Order amount in cents [long]
+    amountInCents = None
 
-	#: Order amount currency [String]
-	currencyIsoEnum = None
+    #: Amount (in cents) to consider the order paid
+    amountInCentsToConsiderPaid = None
 
-	#: Buyer instance
-	buyer = None
+    #: Order amount currency [String]
+    currencyIsoEnum = None
 
-	#: Mundipagg merchant identification
-	merchantKey = None
+    #: Buyer instance
+    buyer = None
 
-	#: If merchant not send OrderReference, Mundipagg will generate and return in the response.
-	#: @return [String] Custom order identification.
-	orderReference = None
+    #: Mundipagg merchant identification
+    merchantKey = None
 
-	#: list with all credit card transaction [List]
-	creditCardTransactionCollection = []
+    #: If merchant not send OrderReference, Mundipagg will generate and return in the response.
+    #: @return [String] Custom order identification.
+    orderReference = None
 
-	#: List with all boleto transaction [List]
-	boletoTransactionCollection = []
+    #: list with all credit card transaction [List]
+    creditCardTransactionCollection = []
 
-	#: If not send, it will be generate automatically in the webservice and returned in response.
-	#: Web service request identification, it is used for investigate problems with webservice requests.
-	#: @return [Guid] Globally Unique Identifier. 		
-	requestKey = None
+    #: List with all boleto transaction [List]
+    boletoTransactionCollection = []
 
-	#: Not used
-	emailUpdateToBuyerEnum = 'No'
+    #: If not send, it will be generate automatically in the webservice and returned in response.
+    #: Web service request identification, it is used for investigate problems with webservice requests.
+    #: @return [Guid] Globally Unique Identifier.
+    requestKey = None
 
-	#: Not used
-	FirstCreditCardResult = None
+    #: Not used
+    emailUpdateToBuyerEnum = 'No'
 
-	class DinheiroIsoEnum:
-		"""Currency Iso Enum"""
-		BrazillianReal = 'BRL'
-		AmericanDollar = 'USD'
+    #: Not used
+    FirstCreditCardResult = None
 
-	def __init__(self):
-		self.currencyIsoEnum = self.DinheiroIsoEnum.BrazillianReal
-		self.target_env = 'dev'
-		self.merchantKey = '00000000-0000-0000-0000-000000000000'
-		
+    class DinheiroIsoEnum:
+
+        """Currency Iso Enum"""
+        BrazillianReal = 'BRL'
+        AmericanDollar = 'USD'
+
+    def __init__(self):
+        self.currencyIsoEnum = self.DinheiroIsoEnum.BrazillianReal
+        self.target_env = 'dev'
+        self.merchantKey = '00000000-0000-0000-0000-000000000000'

@@ -8,16 +8,20 @@ import uuid
 
 
 class NewOrder():
-    """ 
-    Essa classe é apenas um helper simplificado para a operações de cartão de crédito 
-    :rtype : CreateOrderResponse   
+
+    """
+    Essa classe é apenas um helper simplificado para a operações de cartão de crédito
+    :rtype : CreateOrderResponse
     """
     ultimaresposta = None
     MerchantKey = "00000000-0000-0000-0000-000000000000"
     nog = None
     currencyIsoEnum = None
 
-    def __init__(self, MerchantKey, currencyIsoEnum=CreateOrderRequest.DinheiroIsoEnum.BrazillianReal):
+    def __init__(
+            self,
+            MerchantKey,
+            currencyIsoEnum=CreateOrderRequest.DinheiroIsoEnum.BrazillianReal):
         """
         :param MerchantKey: A string que foi atribuido especialmente para a sua loja
         :param currencyIsoEnum: Uma das possívels moedas definidas em CreateOrderRequest.DinheiroIsoEnum
@@ -25,13 +29,17 @@ class NewOrder():
         self.MerchantKey = MerchantKey
         self.currencyIsoEnum = currencyIsoEnum
 
-    def usual_ccorder(self,
-                      ZamountInCent, ZcreditCardNumber, ZsecurityCode, ZholderName,
-                      ZexpirationYear, ZexpirationMonth,
-                      simulado=1,
-                      ZcreditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
-                      ZorderReference="Exemplo 123"
-    ):
+    def usual_ccorder(
+            self,
+            ZamountInCent,
+            ZcreditCardNumber,
+            ZsecurityCode,
+            ZholderName,
+            ZexpirationYear,
+            ZexpirationMonth,
+            simulado=1,
+            ZcreditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
+            ZorderReference="Exemplo 123"):
         """
         :param ZamountInCent:
         :param ZcreditCardNumber:
@@ -53,7 +61,8 @@ class NewOrder():
         nocct.securityCode = ZsecurityCode
         nocct.expirationMonth = ZexpirationMonth
         nocct.expirationYear = ZexpirationYear
-        nocct.creditCardBrandEnum = ZcreditCardBrand  # nocct.BrandEnum.MasterCard
+        # nocct.BrandEnum.MasterCard
+        nocct.creditCardBrandEnum = ZcreditCardBrand
         nocct.creditCardOperationEnum = nocct.OperationEnum.AuthAndCapture
         nocct.installmentCount = 1
         nocct.transactionReference = "transactionReference"
@@ -78,8 +87,13 @@ class NewOrder():
         # xf.write( str(self.nog.last_received()) )
         return resposta
 
-    def instantbuy_ccorder(self, ZamountInCent, ZinstantBuyKey, ZcreditCardBrand='Mastercard',
-                           ZorderReference="Exemplo 123", simulado=1):
+    def instantbuy_ccorder(
+            self,
+            ZamountInCent,
+            ZinstantBuyKey,
+            ZcreditCardBrand='Mastercard',
+            ZorderReference="Exemplo 123",
+            simulado=1):
         """
         :param ZamountInCent:
         :param ZinstantBuyKey:
@@ -92,7 +106,8 @@ class NewOrder():
         nocct = CreditCardTransaction()
         nocct.paymentMethodCode = simulado
         nocct.amountInCents = ZamountInCent
-        nocct.creditCardBrandEnum = ZcreditCardBrand  # nocct.BrandEnum.MasterCard
+        # nocct.BrandEnum.MasterCard
+        nocct.creditCardBrandEnum = ZcreditCardBrand
         nocct.creditCardOperationEnum = nocct.OperationEnum.AuthAndCapture
         nocct.installmentCount = 1
         nocct.InstantBuyKey = ZinstantBuyKey
@@ -117,4 +132,3 @@ class NewOrder():
         # xf.write("\n\nSUDS Client last XML received:\n\n")
         # xf.write( str(self.nog.last_received()) )
         return resposta
-

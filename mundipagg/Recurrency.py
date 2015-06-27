@@ -1,26 +1,26 @@
 class Recurrency:
-	"""Class that hold recurrency transaction information"""
-	
-	#: Date the first recurrency will be charged [Date]
-	dateToStartBilling = None
 
-	#: Indicating the recurrency frequency [String]
-	frequencyEnum = None
+    """Class that hold recurrency transaction information"""
 
-	#: Recurrency interval [Integer]
-	interval = None
+    #: Date the first recurrency will be charged [Date]
+    dateToStartBilling = None
 
-	#: Indicates whether the One webservice will run a OneDollarAuth [Boolean]
-	oneDollarAuth = None
+    #: Indicating the recurrency frequency [String]
+    frequencyEnum = None
 
-	#: Number of recurrencies [Integer]
-	recurrences = None
+    #: Recurrency interval [Integer]
+    interval = None
 
-	class Frequency:
-		Monthly = 'Monthly'
-		Yearly = 'Yearly'
-		Daily = 'Daily'
+    #: Indicates whether the One webservice will run a OneDollarAuth [Boolean]
+    oneDollarAuth = None
 
-	
-	def __init__(self):
-		self.frequencyEnum = self.Frequency	
+    #: Number of recurrencies [Integer]
+    recurrences = None
+
+    class Frequency:
+        Monthly = 'Monthly'
+        Yearly = 'Yearly'
+        Daily = 'Daily'
+
+    def __init__(self):
+        self.frequencyEnum = self.Frequency

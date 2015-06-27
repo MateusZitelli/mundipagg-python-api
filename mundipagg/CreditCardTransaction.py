@@ -1,74 +1,76 @@
 # -*- coding: UTF-8 -*-
 __author__ = 'Arcarius Engenharia'
 
+
 class CreditCardTransaction:
-	"""Class that hold Credit Card Transaction information"""
 
-	#: Transaction amount in cents [Long]
-	amountInCents = None
+    """Class that hold Credit Card Transaction information"""
 
-	#: Card brand. Use the BrandEnum class [String]
-	creditCardBrandEnum = None
+    #: Transaction amount in cents [Long]
+    amountInCents = None
 
-	#: Credit card number [String]
-	creditCardNumber = None
+    #: Card brand. Use the BrandEnum class [String]
+    creditCardBrandEnum = None
 
-	#: Type of operation. User OperationEnum class [String]
-	creditCardOperationEnum = None
+    #: Credit card number [String]
+    creditCardNumber = None
 
-	#: Credit card expiration month [Integer]
-	expirationMonth = None
+    #: Type of operation. User OperationEnum class [String]
+    creditCardOperationEnum = None
 
-	#: Credit card expiration year [Integer]
-	expirationYear = None
+    #: Credit card expiration month [Integer]
+    expirationMonth = None
 
-	#: Name in the credit card [String]
-	holderName = None
+    #: Credit card expiration year [Integer]
+    expirationYear = None
 
-	#: Transaction installments count [Integer]
-	installmentCount = None
+    #: Name in the credit card [String]
+    holderName = None
 
-	#: Card security code [Integer]
-	securityCode = None
+    #: Transaction installments count [Integer]
+    installmentCount = None
 
-	#: Code to select the payment method. Can be Cielo, Redecard and others [Integer]
-	paymentMethodCode = None
+    #: Card security code [Integer]
+    securityCode = None
 
-	#: Custom transaction identifier [String]
-	transactionReference = None
+    #: Code to select the payment method. Can be Cielo, Redecard and others [Integer]
+    paymentMethodCode = None
 
-	#: Fill this property when creating a recurrency transaction. 
-	#: [Recurrency] Transaction recurrency information.
-	recurrency = None
+    #: Custom transaction identifier [String]
+    transactionReference = None
 
-	#: Brand enum
-	brandEnum = None
+    #: Fill this property when creating a recurrency transaction.
+    #: [Recurrency] Transaction recurrency information.
+    recurrency = None
 
-	#: Operation enum
-	operationEnum = None
+    #: Brand enum
+    brandEnum = None
 
-	#: Correção... estava faltando esse campo (Guid)
-	InstantBuyKey = None
+    #: Operation enum
+    operationEnum = None
 
-	class BrandEnum:
-		"""Credit card brand enum"""
-		Visa = 'Visa'
-		MasterCard = 'Mastercard'
-		AmericanExpress = 'Amex'
-		Hipercard = 'Hipercard'
-		Diners = 'Diners'
-		Elo = 'Elo'
-		Aura = 'Aura'
-		Discover = 'Discover'
+    #: Correção... estava faltando esse campo (Guid)
+    InstantBuyKey = None
 
-	class OperationEnum:
-		"""Operation type enum"""
-		AuthOnly = 'AuthOnly'
-		AuthAndCapture = 'AuthAndCapture'
-		AuthAndCaptureDelay = 'AuthAndCaptureDelay'	
+    class BrandEnum:
 
+        """Credit card brand enum"""
+        Visa = 'Visa'
+        MasterCard = 'Mastercard'
+        AmericanExpress = 'Amex'
+        Hipercard = 'Hipercard'
+        Diners = 'Diners'
+        Elo = 'Elo'
+        Aura = 'Aura'
+        Discover = 'Discover'
 
-	def __init__(self):
-		self.brandEnum = self.BrandEnum	
-		self.operationEnum = self.OperationEnum
-		
+    class OperationEnum:
+
+        """Operation type enum"""
+        AuthOnly = 'AuthOnly'
+        AuthAndCapture = 'AuthAndCapture'
+        AuthAndCaptureDelay = 'AuthAndCaptureDelay'
+
+    def __init__(self):
+        self.brandEnum = self.BrandEnum
+        self.operationEnum = self.OperationEnum

@@ -10,6 +10,6 @@ setup(name='mundipagg-python-api',
       packages=['mundipagg'],
       zip_safe=False,
       install_requires=[
-          'suds',
-          ],
+          'suds-jurko',
+      ],
       )

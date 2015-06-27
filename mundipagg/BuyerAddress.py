@@ -1,62 +1,63 @@
 class BuyerAddress:
-	"""	Class that represents a Buyer Address """
 
-	#: Address type [String]
-	addressTypeEnum = None
+    """	Class that represents a Buyer Address """
 
-	#: City [String]
-	city = None
+    #: Address type [String]
+    addressTypeEnum = None
 
-	#: Address complement [String]
-	complement = None
+    #: City [String]
+    city = None
 
-	#: Address Country
-	countryEnum = None
+    #: Address complement [String]
+    complement = None
 
-	#: District [String]
-	district = None
+    #: Address Country
+    countryEnum = None
 
-	#: Address number [String]
-	number = None
+    #: District [String]
+    district = None
 
-	#: Address State [String]
-	state = None
+    #: Address number [String]
+    number = None
 
-	#: Street [String]
-	street = None
+    #: Address State [String]
+    state = None
 
-	#: Zip Code [String]
-	zipCode = None
+    #: Street [String]
+    street = None
 
-	#: Address Enum defined on init
-	AddressEnum = None
+    #: Zip Code [String]
+    zipCode = None
 
-	#: Country Enum defined on init
-	Country = None
+    #: Address Enum defined on init
+    AddressEnum = None
 
+    #: Country Enum defined on init
+    Country = None
 
-	class AddressTypeEnum: 
-		"""Address Type Enum"""
-		Billing = 'Billing'
-		Shipping = 'Shipping'
-		Work = 'Comercial'
-		Home = 'Residential'
+    class AddressTypeEnum:
 
-	class CountryEnum: 
-		"""Country Enum"""
-		Brazil = 'Brazil'
-		UnitedStates = 'USA'
-		Argentina = 'Argentina'
-		Bolivia = 'Bolivia'
-		Chile = 'Chile'
-		Colombia = 'Colombia'
-		Uruguay = 'Uruguay'
-		Mexico = 'Mexico'
-		Paraguay = 'Paraguay'			
-	
-	def __init__(self):
-		self.Country = self.CountryEnum
-		self.AddressEnum = self.AddressTypeEnum
-		self.countryEnum = self.CountryEnum.Brazil
-		self.addressTypeEnum = self.AddressTypeEnum.Home
-		
+        """Address Type Enum"""
+        Billing = 'Billing'
+        Shipping = 'Shipping'
+        Work = 'Comercial'
+        Home = 'Residential'
+
+    class CountryEnum:
+
+        """Country Enum"""
+        Brazil = 'Brazil'
+        UnitedStates = 'USA'
+        Argentina = 'Argentina'
+        Bolivia = 'Bolivia'
+        Chile = 'Chile'
+        Colombia = 'Colombia'
+        Uruguay = 'Uruguay'
+        Mexico = 'Mexico'
+        Paraguay = 'Paraguay'
+
+    def __init__(self):
+        self.Country = self.CountryEnum
+        self.AddressEnum = self.AddressTypeEnum
+        self.countryEnum = self.CountryEnum.Brazil
+        self.addressTypeEnum = self.AddressTypeEnum.Home

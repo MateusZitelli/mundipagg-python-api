@@ -1,25 +1,26 @@
 class BoletoTransaction:
-	"""
-	Class that hold an BoletoTransaction information 
-	"""
 
-	#: Transaction amount in cents [Long]
-	amountInCents = 0
+    """
+    Class that hold an BoletoTransaction information
+    """
 
-	#: Bank code [Int]
-	bankNumber = None
+    #: Transaction amount in cents [Long]
+    amountInCents = 0
 
-	#: How many days after the creation the boleto will be valid [Int]
-	daysToAddInBoletoExpirationDate = None
+    #: Bank code [Int]
+    bankNumber = None
 
-	#: Number used to identify the boleto
-	nossoNumero = None
+    #: How many days after the creation the boleto will be valid [Int]
+    daysToAddInBoletoExpirationDate = None
 
-	#: Text with payment instruction. Limit: 120 characteres [String]
-	instructions = None
+    #: Number used to identify the boleto
+    nossoNumero = None
 
-	#: Custom transaction identifier
-	transactionReference = None
+    #: Text with payment instruction. Limit: 120 characteres [String]
+    instructions = None
 
-	def __init__(self):
-		self.daysToAddInBoletoExpirationDate = 7		
+    #: Custom transaction identifier
+    transactionReference = None
+
+    def __init__(self):
+        self.daysToAddInBoletoExpirationDate = 7
