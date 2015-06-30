@@ -31,47 +31,47 @@ class NewOrder():
 
     def usual_ccorder(
             self,
-            ZamountInCent,
-            ZcreditCardNumber,
-            ZsecurityCode,
-            ZholderName,
-            ZexpirationYear,
-            ZexpirationMonth,
+            amountInCent,
+            creditCardNumber,
+            securityCode,
+            holderName,
+            expirationYear,
+            expirationMonth,
             simulado=1,
-            ZcreditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
-            ZorderReference="Exemplo 123"):
+            creditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
+            orderReference="Exemplo 123"):
         """
-        :param ZamountInCent:
-        :param ZcreditCardNumber:
-        :param ZsecurityCode:
-        :param ZholderName:
-        :param ZexpirationYear:
-        :param ZexpirationMonth:
+        :param amountInCent:
+        :param creditCardNumber:
+        :param securityCode:
+        :param holderName:
+        :param expirationYear:
+        :param expirationMonth:
         :param simulado:
-        :param ZcreditCardBrand:
+        :param creditCardBrand:
         :return: CreateOrderResponse:
         :rtype: CreateOrderResponse
         """
 
         nocct = CreditCardTransaction()
         nocct.paymentMethodCode = simulado
-        nocct.amountInCents = ZamountInCent
-        nocct.creditCardNumber = ZcreditCardNumber
-        nocct.holderName = ZholderName
-        nocct.securityCode = ZsecurityCode
-        nocct.expirationMonth = ZexpirationMonth
-        nocct.expirationYear = ZexpirationYear
+        nocct.amountInCents = amountInCent
+        nocct.creditCardNumber = creditCardNumber
+        nocct.holderName = holderName
+        nocct.securityCode = securityCode
+        nocct.expirationMonth = expirationMonth
+        nocct.expirationYear = expirationYear
         # nocct.BrandEnum.MasterCard
-        nocct.creditCardBrandEnum = ZcreditCardBrand
+        nocct.creditCardBrandEnum = creditCardBrand
         nocct.creditCardOperationEnum = nocct.OperationEnum.AuthAndCapture
         nocct.installmentCount = 1
         nocct.transactionReference = "transactionReference"
 
         nor = CreateOrderRequest()
         nor.currencyIsoEnum = self.currencyIsoEnum
-        nor.amountInCents = ZamountInCent
+        nor.amountInCents = amountInCent
         nor.amountInCentsToConsiderPaid = 0
-        nor.orderReference = ZorderReference
+        nor.orderReference = orderReference
         nor.emailUpdateToBuyerEnum = "Yes"
         nor.merchantKey = self.MerchantKey
         nor.creditCardTransactionCollection.append(nocct)
@@ -89,33 +89,33 @@ class NewOrder():
 
     def instantbuy_ccorder(
             self,
-            ZamountInCent,
-            ZinstantBuyKey,
-            ZcreditCardBrand='Mastercard',
-            ZorderReference="Exemplo 123",
+            amountInCent,
+            instantBuyKey,
+            creditCardBrand='Mastercard',
+            orderReference="Exemplo 123",
             simulado=1):
         """
-        :param ZamountInCent:
-        :param ZinstantBuyKey:
+        :param amountInCent:
+        :param instantBuyKey:
         :param simulado:
-        :param ZcreditCardBrand:
+        :param creditCardBrand:
         :return: arcCreateOrderResponse:
         :rtype: CreateOrderResponse
         """
 
         nocct = CreditCardTransaction()
         nocct.paymentMethodCode = simulado
-        nocct.amountInCents = ZamountInCent
+        nocct.amountInCents = amountInCent
         # nocct.BrandEnum.MasterCard
-        nocct.creditCardBrandEnum = ZcreditCardBrand
+        nocct.creditCardBrandEnum = creditCardBrand
         nocct.creditCardOperationEnum = nocct.OperationEnum.AuthAndCapture
         nocct.installmentCount = 1
-        nocct.InstantBuyKey = ZinstantBuyKey
+        nocct.InstantBuyKey = instantBuyKey
         nocct.transactionReference = "transactionReference"
 
         nor = CreateOrderRequest()
         nor.currencyIsoEnum = self.currencyIsoEnum
-        nor.amountInCents = ZamountInCent
+        nor.amountInCents = amountInCent
         nor.amountInCentsToConsiderPaid = 0
         nor.orderReference = "Order 123"
         nor.emailUpdateToBuyerEnum = "Yes"

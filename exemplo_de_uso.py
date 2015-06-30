@@ -13,11 +13,11 @@ from mundipagg.CreditCardTransaction import CreditCardTransaction
 # vai obter erros mesmo no ambiente simulado.
 neword = NewOrder(MerchantKey="1cb019a7-105a-40bf-a205-bdfd55d58c2f")
 newordres = neword.usual_ccorder(
-    ZamountInCent=200, ZcreditCardNumber="1234123412341234",
-    ZsecurityCode="123", ZholderName="Ze da Silva",
-    ZexpirationYear=2017, ZexpirationMonth=5,
-    ZcreditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
-    ZorderReference="Exemplo234",
+    amountInCent=200, creditCardNumber="1234123412341234",
+    securityCode="123", holderName="e da Silva",
+    expirationYear=2017, expirationMonth=5,
+    creditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
+    orderReference="Exemplo234",
     simulado=1)
 
 
