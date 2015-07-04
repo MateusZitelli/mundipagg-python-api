@@ -11,9 +11,4 @@ setup(name='mundipagg-python-api',
       zip_safe=False,
       install_requires=[
           'suds-jurko',
-<<<<<<< HEAD
-      ],
-=======
-          ],
->>>>>>> mz/master
-      )
+      ])

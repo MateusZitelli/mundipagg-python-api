@@ -4,8 +4,8 @@ __author__ = 'Arcarius Engenharia'
 from mundipagg.CreateOrderRequest import CreateOrderRequest
 from mundipagg.CreditCardTransaction import CreditCardTransaction
 from mundipagg.Gateway import Gateway
-import uuid
-
+from mundipagg.Buyer import Buyer
+from mundipagg.BuyerAddress import BuyerAddress
 
 class NewOrder():
 
@@ -39,6 +39,22 @@ class NewOrder():
             expirationMonth,
             simulado=1,
             creditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
+            personType=None,
+            taxDocumentType=None,
+            realName=None,
+            email=None,
+            gender=None,
+            homePhone=None,
+            mobilePhone=None,
+            workPhone=None,
+            taxDocumentNumber=None,
+            city=None,
+            complement=None,
+            district=None,
+            number=None,
+            state=None,
+            street=None,
+            zipcode=None,
             orderReference="Exemplo 123"):
         """
         :param amountInCent:
@@ -49,6 +65,15 @@ class NewOrder():
         :param expirationMonth:
         :param simulado:
         :param creditCardBrand:
+        :param personType:
+        :param taxDocumentType:
+        :param realName:
+        :param email:
+        :param gender:
+        :param homePhone:
+        :param mobilePhone:
+        :param workPhone:
+        :param taxDocumentNumber:
         :return: CreateOrderResponse:
         :rtype: CreateOrderResponse
         """
@@ -67,6 +92,32 @@ class NewOrder():
         nocct.installmentCount = 1
         nocct.transactionReference = "transactionReference"
 
+        naddr = None
+        if city or state or street or zipcode:
+            naddr = BuyerAddress()
+            naddr.city = city
+            naddr.complement = complement
+            naddr.district = district
+            naddr.number = number
+            naddr.state = state
+            naddr.street = street
+            naddr.zipcode = zipcode
+
+        nob = None
+        if taxDocumentNumber:
+            nob = Buyer()
+            nob.personType = personType
+            nob.taxDocumentType = taxDocumentType
+            nob.name = realName
+            nob.email = email
+            nob.genderEnum = gender
+            nob.homePhone = homePhone
+            nob.mobilePhone = mobilePhone
+            nob.workPhone = workPhone
+            nob.taxDocumentNumber = taxDocumentNumber
+            if naddr != None:
+                nob.addressCollection.append(naddr)
+
         nor = CreateOrderRequest()
         nor.currencyIsoEnum = self.currencyIsoEnum
         nor.amountInCents = amountInCent
@@ -75,6 +126,7 @@ class NewOrder():
         nor.emailUpdateToBuyerEnum = "Yes"
         nor.merchantKey = self.MerchantKey
         nor.creditCardTransactionCollection.append(nocct)
+        nor.buyer = nob
 
         if self.nog is None:
             self.nog = Gateway()

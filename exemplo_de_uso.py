@@ -11,13 +11,15 @@ from mundipagg.CreditCardTransaction import CreditCardTransaction
 
 # Atenção: Preencha aqui a sua chave do MundiPagg !!!! Se não fizer isso
 # vai obter erros mesmo no ambiente simulado.
-neword = NewOrder(MerchantKey="1cb019a7-105a-40bf-a205-bdfd55d58c2f")
+neword = NewOrder(MerchantKey="")
 newordres = neword.usual_ccorder(
     amountInCent=200, creditCardNumber="1234123412341234",
     securityCode="123", holderName="e da Silva",
     expirationYear=2017, expirationMonth=5,
     creditCardBrand=CreditCardTransaction.BrandEnum.MasterCard,
     orderReference="Exemplo234",
+    taxDocumentNumber="11111111111",
+    street="Rua Vergueiro",
     simulado=1)
 
 
